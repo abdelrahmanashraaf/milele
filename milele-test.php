@@ -1,12 +1,16 @@
 <html>
+
 <head>
   <title>Milele Filters Test</title>
+  <link rel="icon" type="image/x-icon" href="MileleLogowhite.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="/main.js"></script>
 </head>
+
 <body>
   <header><img src="MileleLogowhite.png"></header>
   <div class="container">
@@ -104,4 +108,32 @@
     </div>
   </div>
 </body>
+<footer>
+  <script>
+    function handler_quantity(selectedObject) {
+      $.ajax({
+        type: "POST",
+        url: 'milele-controller.php',
+        dataType: "text",
+        data: {
+          update: 1,
+          supplier: selectedObject.getAttribute("supplier"),
+          whole_seller: selectedObject.getAttribute("whole_seller"),
+          steering_type: selectedObject.getAttribute("steering_type"),
+          model: selectedObject.getAttribute("model"),
+          sfx: selectedObject.getAttribute("sfx"),
+          variant: selectedObject.getAttribute("variant"),
+          color: selectedObject.getAttribute("color"),
+          year: selectedObject.getAttribute("year"),
+          month: selectedObject.getAttribute("month"),
+          quantity: selectedObject.value,
+        },
+        success: function(response) {
+          alert(response);
+        }
+      });
+    }
+  </script>
+</footer>
+
 </html>
